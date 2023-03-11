@@ -4,10 +4,10 @@ plugins {
 }
 
 android {
-    namespace = "com.example.musicapp_kmp.android"
+    namespace = "com.example.asteroids.android"
     compileSdk = 33
     defaultConfig {
-        applicationId = "com.example.musicapp_kmp.android"
+        applicationId = "com.example.asteroids.android"
         minSdk = 24
         targetSdk = 33
         versionCode = 1

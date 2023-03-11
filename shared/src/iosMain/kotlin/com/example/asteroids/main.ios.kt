@@ -1,4 +1,4 @@
-package com.example.musicapp_kmp
+package com.example.asteroids
 
 import MainCommon
 import androidx.compose.foundation.layout.Box
@@ -9,7 +9,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Application
 import platform.UIKit.UIViewController
 
-fun MainiOS(): UIViewController = Application("Music-App") {
+fun MainiOS(): UIViewController = Application("Asteroids-App") {
     Column {
         Box(
             modifier = Modifier

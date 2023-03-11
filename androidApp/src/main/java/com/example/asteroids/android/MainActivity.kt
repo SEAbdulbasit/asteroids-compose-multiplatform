@@ -1,9 +1,9 @@
-package com.example.musicapp_kmp.android
+package com.example.asteroids.android
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import com.example.musicapp_kmp.MainAndroid
+import com.example.asteroids.MainAndroid
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

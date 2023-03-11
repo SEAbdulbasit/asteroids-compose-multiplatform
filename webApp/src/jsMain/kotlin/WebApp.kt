@@ -6,7 +6,7 @@ import org.jetbrains.skiko.wasm.onWasmReady
 
 fun main() {
     onWasmReady {
-        Window("MusicApp-KMP") {
+        Window("Asteroids Web") {
             Column(modifier = Modifier.fillMaxSize()) {
                 CommonMainWeb()
             }

@@ -1,4 +1,4 @@
-package com.example.musicapp_kmp
+package com.example.asteroids
 
 import MainCommon
 import androidx.compose.runtime.Composable
