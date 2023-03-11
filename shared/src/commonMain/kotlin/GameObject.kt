@@ -25,9 +25,7 @@ class BulletData(speed: Double = 0.0, angle: Double = 0.0, position: Vector2 = V
 }
 
 sealed class GameObject(
-    speed: Double = 0.0,
-    angle: Double = 0.0,
-    position: Vector2 = Vector2.ZERO
+    speed: Double = 0.0, angle: Double = 0.0, position: Vector2 = Vector2.ZERO
 ) {
     var speed by mutableStateOf(speed)
     var angle by mutableStateOf(angle)

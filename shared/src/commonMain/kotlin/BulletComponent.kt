@@ -11,14 +11,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun Bullet(bulletData: BulletData) {
+internal fun Bullet(bulletData: BulletData) {
     val bulletSize = bulletData.size.dp
     Box(
-        Modifier
-            .offset(bulletData.xOffset, bulletData.yOffset)
-            .size(bulletSize)
-            .rotate(bulletData.angle.toFloat())
-            .clip(CircleShape)
-            .background(Color.Cyan)
+        Modifier.offset(bulletData.xOffset, bulletData.yOffset).size(bulletSize)
+            .rotate(bulletData.angle.toFloat()).clip(CircleShape).background(Color.Cyan)
     )
 }

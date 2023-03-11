@@ -81,9 +81,7 @@ class Game {
                 // it's still pretty big, let's spawn some smaller ones
                 repeat(2) {
                     gameObjects.add(AsteroidData(
-                        asteroid.speed * 2,
-                        Random.nextDouble() * 360.0,
-                        asteroid.position
+                        asteroid.speed * 2, Random.nextDouble() * 360.0, asteroid.position
                     ).apply {
                         size = asteroid.size / 2
                     })

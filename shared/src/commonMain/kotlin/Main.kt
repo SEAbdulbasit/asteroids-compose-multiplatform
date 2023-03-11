@@ -3,8 +3,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
@@ -23,7 +23,6 @@ import androidx.compose.ui.unit.dp
 import vector.onMove
 
 @Composable
-
 internal fun GameView() {
     val game = remember { Game() }
     val density = LocalDensity.current
@@ -49,17 +48,18 @@ internal fun GameView() {
             )
         }
         Box(
-            modifier = Modifier.aspectRatio(1.0f).background(Color(0, 0, 30)).fillMaxWidth().fillMaxHeight()
+            modifier = Modifier.background(Color(0, 0, 30)).fillMaxSize().fillMaxHeight()
         ) {
             Box(modifier = Modifier.fillMaxWidth().fillMaxHeight().clipToBounds().clickable() {
-                    game.ship.fire(game)
-                }.onMove(game = game, onMove = { false }, onEnter = { false }, onExit = { false })
-                .onSizeChanged {
-                    with(density) {
-                        game.width = it.width.toDp()
-                        game.height = it.height.toDp()
-                    }
-                }) {
+                game.ship.fire(game)
+            }.onMove { offset ->
+                game.targetLocation = offset
+            }.onSizeChanged {
+                with(density) {
+                    game.width = it.width.toDp()
+                    game.height = it.height.toDp()
+                }
+            }) {
                 game.gameObjects.forEach {
                     when (it) {
                         is ShipData -> Ship(it)

@@ -14,26 +14,19 @@ import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun Ship(shipData: ShipData) {
+internal fun Ship(shipData: ShipData) {
     val shipSize = shipData.size.dp
     Box(
-        Modifier
-            .offset(shipData.xOffset, shipData.yOffset)
-            .size(shipSize)
-            .rotate(shipData.visualAngle.toFloat())
-            .clip(CircleShape)
-            .background(Color.Black)
+        Modifier.offset(shipData.xOffset, shipData.yOffset).size(shipSize)
+            .rotate(shipData.visualAngle.toFloat()).clip(CircleShape).background(Color.Black)
     ) {
         Canvas(modifier = Modifier.fillMaxSize(), onDraw = {
-            drawPath(
-                color = Color.White,
-                path = Path().apply {
-                    val size = shipSize.toPx()
-                    moveTo(0f, 0f) // Top-left corner...
-                    lineTo(size, size / 2f) // ...to right-center...
-                    lineTo(0f, size) // ... to bottom-left corner.
-                }
-            )
+            drawPath(color = Color.White, path = Path().apply {
+                val size = shipSize.toPx()
+                moveTo(0f, 0f) // Top-left corner...
+                lineTo(size, size / 2f) // ...to right-center...
+                lineTo(0f, size) // ... to bottom-left corner.
+            })
         })
     }
 }

@@ -11,14 +11,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun Asteroid(asteroidData: AsteroidData) {
+internal fun Asteroid(asteroidData: AsteroidData) {
     val asteroidSize = asteroidData.size.dp
     Box(
-        Modifier
-            .offset(asteroidData.xOffset, asteroidData.yOffset)
-            .size(asteroidSize)
-            .rotate(asteroidData.angle.toFloat())
-            .clip(CircleShape)
-            .background(Color(102, 102, 153))
+        Modifier.offset(asteroidData.xOffset, asteroidData.yOffset).size(asteroidSize)
+            .rotate(asteroidData.angle.toFloat()).clip(CircleShape).background(Color(102, 102, 153))
     )
 }
