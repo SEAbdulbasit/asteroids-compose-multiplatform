@@ -19,6 +19,7 @@ import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import vector.onMove
 
@@ -53,7 +54,9 @@ internal fun GameView() {
             Box(modifier = Modifier.fillMaxWidth().fillMaxHeight().clipToBounds().clickable() {
                 game.ship.fire(game)
             }.onMove { offset ->
-                game.targetLocation = offset
+                with(density) {
+                    game.targetLocation = DpOffset(offset.x.toDp(), offset.y.toDp())
+                }
             }.onSizeChanged {
                 with(density) {
                     game.width = it.width.toDp()
