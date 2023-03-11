@@ -27,7 +27,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "MusicApp-KMP"
+rootProject.name = "asteroids-compose-multiplatform"
 include(":androidApp")
 include(":shared")
 include(":desktopApp")

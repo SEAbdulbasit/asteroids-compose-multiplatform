@@ -1,5 +1,3 @@
-package com.example.musicapp_kmp
-
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
