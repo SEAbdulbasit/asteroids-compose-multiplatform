@@ -1,4 +1,6 @@
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -7,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -15,7 +18,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clipToBounds
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalDensity
@@ -35,7 +38,7 @@ internal fun GameView() {
         }
     }
 
-    Column(modifier = Modifier.background(Color(0, 0, 30)).fillMaxHeight()) {
+    Column(modifier = Modifier.background(Color(0, 0, 30)).fillMaxHeight().padding(16.dp)) {
         Row(modifier = Modifier.align(Alignment.CenterHorizontally)) {
             Button({
                 game.startGame()
@@ -49,9 +52,11 @@ internal fun GameView() {
             )
         }
         Box(
-            modifier = Modifier.background(Color(0, 0, 30)).fillMaxSize().fillMaxHeight()
+            modifier = Modifier.fillMaxSize().border(
+                BorderStroke(1.dp, Color.White), shape = RoundedCornerShape(8.dp)
+            ).background(Color(0, 0, 30)).clip(RoundedCornerShape(8.dp))
         ) {
-            Box(modifier = Modifier.fillMaxWidth().fillMaxHeight().clipToBounds().clickable() {
+            Box(modifier = Modifier.fillMaxWidth().fillMaxHeight().clickable() {
                 game.ship.fire(game)
             }.onMove { offset ->
                 with(density) {
