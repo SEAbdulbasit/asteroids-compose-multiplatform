@@ -1,25 +1,22 @@
-# KMP-Compose Multiplatfrom
+## Asteroids Compose Multiplatform
+Asteroids is a 2D space game that is built using Compose Multiplatform. It has now been updated to support multiple platforms including iOS, Android, Web, and Desktop.
 
-This is a template for getting stated with Compose Multiplatform on Android, iOS, Web and Desktop.
-As i was exploring Compose Multiplatform and I realised that it was a bit difficult to get stated
-with Compose
-Multiplatform.
-I created this template so that anyone interested can start quickly without a lot of effort and
-issues.
+## Multiplatform Support
+The extracted classes from the openrndr-math library were used to enable support for multiple platforms.
 
-In this template, we have Android, iOS, Web and Desktop support. The common UI is in shared moudle
-and all platform is
-calling that view.
+## DEMO
+### Android:
+[screen-20230312-095429.mp4](..%2F..%2FDesktop%2Fscreen-20230312-095429.mp4)
 
-For more details on Compose Multiplatform UI visit: https://github.com/JetBrains/compose-jb/
+## iOS:
+[Simulator Recording.mp4](..%2F..%2FDesktop%2FSimulator%20Recording.mp4)
 
-| Android                                                                                                         | iOS                                                                                                             | 
-|-----------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| ![image](https://user-images.githubusercontent.com/33172684/221401524-d495a9ef-2c7a-4709-a134-a08d25bb5245.png) | ![image](https://user-images.githubusercontent.com/33172684/221401580-305c2044-4121-426e-b1cc-3181947a9752.png) 
+## Desktop:
+[Screen Recording 2023-03-12 at 9.53.16 AM.mov](..%2F..%2FDesktop%2FScreen%20Recording%202023-03-12%20at%209.53.16%20AM.mov)
 
-| Web                                                                                                             | Desktop                                                                                                                                   |
-|-----------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
-| ![image](https://user-images.githubusercontent.com/33172684/221401614-5faec789-3026-490b-b712-a771086c6e40.png) | <img width="912" alt="image" src="https://user-images.githubusercontent.com/33172684/221402578-c9b64048-2101-454d-8125-902170a858e9.png"> 
- 
- 
 
+## Web:
+[Screen Recording 2023-03-12 at 9.51.52 AM.mov](..%2F..%2FDesktop%2FScreen%20Recording%202023-03-12%20at%209.51.52%20AM.mov)
+
+## Acknowledgements
+The original project was built by [Sebastian Aigner](https://github.com/SebastianAigner). Here is the orignial repo link:[steroids-compose-for-desktop](https://github.com/SebastianAigner/asteroids-compose-for-desktop). I added support for Android, iOS and Web.
