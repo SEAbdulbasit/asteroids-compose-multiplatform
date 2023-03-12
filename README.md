@@ -1,5 +1,5 @@
 ## Asteroids Compose Multiplatform
-Asteroids is a 2D space game that is built using Compose Multiplatform. It has now been updated to support multiple platforms including iOS, Android, Web, and Desktop.
+Asteroids is a 2D space game that is built using Compose Multiplatform by [Sebastian Aigner](https://github.com/SebastianAigner). It has now been updated to support multiple platforms including iOS, Android, Web, and Desktop.
 
 ## Multiplatform Support
 The extracted classes from the openrndr-math library were used to enable support for multiple platforms.
