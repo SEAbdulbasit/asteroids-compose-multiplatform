@@ -46,7 +46,10 @@ https://user-images.githubusercontent.com/33172684/224525962-16727dee-36f5-46bc-
 
 
 
-
+## Other Projects
+- [Travel App](https://github.com/SEAbdulbasit/TravelApp-KMP)
+- [Music App](https://github.com/SEAbdulbasit/MusicApp-KMP)
+- [Compose Multiplatform Template](https://github.com/SEAbdulbasit/KMP-Compose-Template)
 
 
 ## Acknowledgements
