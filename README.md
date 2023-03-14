@@ -53,4 +53,4 @@ https://user-images.githubusercontent.com/33172684/224525962-16727dee-36f5-46bc-
 
 
 ## Acknowledgements
-The original project was built by [Sebastian Aigner](https://github.com/SebastianAigner). Here is the orignial repo link:[steroids-compose-for-desktop](https://github.com/SebastianAigner/asteroids-compose-for-desktop). I added support for Android, iOS and Web.
+The original project was built by [Sebastian Aigner](https://github.com/SebastianAigner). Here is the orignial repo link:[asteroids-compose-for-desktop](https://github.com/SebastianAigner/asteroids-compose-for-desktop).
