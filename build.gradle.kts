@@ -1,11 +1,12 @@
 plugins {
-    id("com.android.application").version("8.1.0-alpha08").apply(false)
-    id("com.android.library").version("8.1.0-alpha08").apply(false)
-    id("org.jetbrains.compose").version("1.3.0") apply false
-    kotlin("android").version("1.8.0").apply(false)
-    kotlin("multiplatform").version("1.8.0").apply(false)
-    kotlin("jvm") apply false
+    // this is necessary to avoid the plugins to be loaded multiple times
+    // in each subproject's classloader
+    kotlin("multiplatform").apply(false)
+    id("com.android.application").apply(false)
+    id("com.android.library").apply(false)
+    id("org.jetbrains.compose").apply(false)
 }
+
 
 allprojects {
     repositories {
@@ -13,5 +14,26 @@ allprojects {
         mavenCentral()
         maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
         mavenLocal()
+        maven("https://maven.pkg.jetbrains.space/kotlin/p/wasm/experimental")
+        maven("https://maven.pkg.jetbrains.space/kotlin/p/kotlin/dev/")
+    }
+
+    configurations.all {
+        val conf = this
+        // Currently it's necessary to make the android build work properly
+        conf.resolutionStrategy.eachDependency {
+            val isWasm = conf.name.contains("wasm", true)
+            val isJs = conf.name.contains("js", true)
+            val isComposeGroup = requested.module.group.startsWith("org.jetbrains.compose")
+            val isComposeCompiler = requested.module.group.startsWith("org.jetbrains.compose.compiler")
+            if (isComposeGroup && !isComposeCompiler && !isWasm && !isJs) {
+                val composeVersion = project.property("compose.version") as String
+                useVersion(composeVersion)
+            }
+            if (requested.module.name.startsWith("kotlin-stdlib")) {
+                val kotlinVersion = project.property("kotlin.version") as String
+                useVersion(kotlinVersion)
+            }
+        }
     }
 }

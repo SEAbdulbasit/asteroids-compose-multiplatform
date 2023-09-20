@@ -1,18 +1,15 @@
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.window.Window
-import org.jetbrains.skiko.wasm.onWasmReady
+package com.example.musicapp_kmp
 
+import CommonMainWeb
+import androidx.compose.ui.ExperimentalComposeUiApi
+import org.jetbrains.skiko.wasm.onWasmReady
+import androidx.compose.ui.window.CanvasBasedWindow
+
+@OptIn(ExperimentalComposeUiApi::class)
 fun main() {
     onWasmReady {
-        Window("Asteroids Web") {
-            Column(modifier = Modifier.fillMaxSize()) {
-                CommonMainWeb()
-            }
+        CanvasBasedWindow("Asteroids Web") {
+            CommonMainWeb()
         }
     }
 }
-
-
-

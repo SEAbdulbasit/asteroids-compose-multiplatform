@@ -5,15 +5,19 @@ plugins {
 
 kotlin {
     js(IR) {
-        browser()
+        moduleName = "asteroid-app"
+        browser {
+            commonWebpackConfig {
+                outputFileName = "asteroid-app.js"
+            }
+        }
         binaries.executable()
     }
+
     sourceSets {
         val jsMain by getting {
             dependencies {
                 implementation(project(":shared"))
-                implementation(npm("path-browserify", "^1.0.1"))
-                implementation(npm("os-browserify", "^0.3.0"))
             }
         }
     }
@@ -21,4 +25,9 @@ kotlin {
 
 compose.experimental {
     web.application {}
+}
+
+compose {
+    kotlinCompilerPlugin.set("1.5.0")
+    kotlinCompilerPluginArgs.add("suppressKotlinVersionCompatibilityCheck=1.9.10")
 }

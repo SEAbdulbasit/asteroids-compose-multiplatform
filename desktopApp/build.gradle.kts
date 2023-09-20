@@ -25,3 +25,7 @@ compose.desktop {
     }
 }
 
+compose {
+    kotlinCompilerPlugin.set("1.5.0")
+    kotlinCompilerPluginArgs.add("suppressKotlinVersionCompatibilityCheck=1.9.10")
+}

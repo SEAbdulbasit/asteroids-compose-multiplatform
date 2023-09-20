@@ -6,40 +6,22 @@ plugins {
 }
 
 kotlin {
-    android {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "1.8"
-            }
-        }
-    }
+    android()
 
-    ios()
-    iosSimulatorArm64()
     jvm("desktop")
+
+    iosX64()
+    iosArm64()
+    iosSimulatorArm64()
+
     js(IR) {
         browser()
     }
 
-    macosX64 {
-        binaries {
-            executable {
-                entryPoint = "main"
-            }
-        }
-    }
-    macosArm64 {
-        binaries {
-            executable {
-                entryPoint = "main"
-            }
-        }
-    }
-
     cocoapods {
+        version = "1.0.0"
         summary = "Some description for the Shared Module"
         homepage = "Link to the Shared Module homepage"
-        version = "1.0"
         ios.deploymentTarget = "14.1"
         podfile = project.file("../iosApp/Podfile")
         framework {
@@ -51,57 +33,60 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(compose.ui)
-                implementation(compose.foundation)
-                implementation(compose.material)
-                implementation(compose.runtime)
+                api(compose.foundation)
+                api(compose.material)
+                api(compose.runtime)
             }
         }
-        val commonTest by getting {
+        val androidMain by getting {
             dependencies {
-                implementation(kotlin("test"))
+                api("androidx.activity:activity-compose:1.6.1")
+                api("androidx.appcompat:appcompat:1.6.1")
+                api("androidx.core:core-ktx:1.9.0")
             }
         }
-
-        val androidMain by getting
-        val androidUnitTest by getting
-        val iosMain by getting {
+        val iosX64Main by getting
+        val iosArm64Main by getting
+        val iosSimulatorArm64Main by getting
+        val iosMain by creating {
             dependsOn(commonMain)
+            iosX64Main.dependsOn(this)
+            iosArm64Main.dependsOn(this)
+            iosSimulatorArm64Main.dependsOn(this)
         }
-        val iosSimulatorArm64Main by getting {
-            dependsOn(iosMain)
-        }
-
         val desktopMain by getting {
             dependencies {
                 implementation(compose.desktop.common)
             }
         }
-
         val jsMain by getting {
             dependsOn(commonMain)
-            dependencies {
-                implementation(compose.web.core)
-            }
-        }
-
-        val macosMain by creating {
-            dependsOn(commonMain)
-        }
-        val macosX64Main by getting {
-            dependsOn(macosMain)
-        }
-        val macosArm64Main by getting {
-            dependsOn(macosMain)
         }
     }
 }
 
 android {
-    namespace = "com.example.asteroids"
     compileSdk = 33
+    namespace = "com.myapplication.common"
+
+    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
+    sourceSets["main"].res.srcDirs("src/androidMain/res")
+    sourceSets["main"].resources.srcDirs("src/commonMain/resources")
+
     defaultConfig {
-        minSdk = 24
+        minSdk = 33
         targetSdk = 33
     }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+    kotlin {
+        jvmToolchain(11)
+    }
+}
+
+compose {
+    kotlinCompilerPlugin.set("1.5.0")
+    kotlinCompilerPluginArgs.add("suppressKotlinVersionCompatibilityCheck=1.9.10")
 }
